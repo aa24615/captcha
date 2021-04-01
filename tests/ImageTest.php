@@ -11,7 +11,6 @@
 
 namespace Zyan\Tests;
 
-
 use PHPUnit\Framework\TestCase;
 use Zyan\Captcha\Image;
 
@@ -24,35 +23,50 @@ use Zyan\Captcha\Image;
  */
 class ImageTest extends TestCase
 {
-
-    public function testVerifyFalse(){
+    /**
+     * 断言session为false时验证.
+     *
+     * @author 读心印 <aa24615@qq.com>
+     */
+    public function testVerifyFalse()
+    {
         $img = new Image();
 
-        $img->setConfig(['session'=>false]);
+        $img->setConfig(['session' => false]);
 
-        $m  = $img->make();
+        $m = $img->make();
         $code = $m->getCode();
 
         $this->assertTrue(!$m->verify($code));
     }
-
-    public function testVerifyTrue(){
+    /**
+     * 断言session为true时验证.
+     *
+     * @author 读心印 <aa24615@qq.com>
+     */
+    public function testVerifyTrue()
+    {
         $img = new Image();
 
-        $img->setConfig(['session'=>true]);
+        $img->setConfig(['session' => true]);
 
-        $m  = $img->make();
+        $m = $img->make();
         $code = $m->getCode();
 
         $this->assertTrue($m->verify($code));
     }
 
-    public function testSave(){
+    /**
+     * 保存形图验证码.
+     *
+     * @author 读心印 <aa24615@qq.com>
+     */
+    public function testSave()
+    {
         $img = new Image();
-        $m  = $img->make();
+        $m = $img->make();
         @unlink('tests/test.png');
         $m->save('tests/test.png');
         $this->assertTrue(file_exists('tests/test.png'));
     }
-
 }

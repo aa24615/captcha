@@ -19,6 +19,6 @@ $captcha = Captcha::make();
 //$captcha = Captcha::make(['width' => 150,'height' => 50,'font_size' => 25,'background' => '#eee']);
 
 $captcha->save('code.png');
-$code =  $captcha->getCode();
+$code = $captcha->getCode();
 
 var_dump($captcha->verify($code));

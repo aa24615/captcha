@@ -13,7 +13,6 @@ use Intervention\Image\ImageManagerStatic;
  */
 class Image
 {
-
     /**
      * @var array
      */
@@ -207,8 +206,7 @@ class Image
 
     public function verify(int $code)
     {
-
-        if(!isset( $_SESSION['zyan_captcha_code'])){
+        if (!isset($_SESSION['zyan_captcha_code'])) {
             return false;
         }
         $zyan_captcha_code = $_SESSION['zyan_captcha_code'];
